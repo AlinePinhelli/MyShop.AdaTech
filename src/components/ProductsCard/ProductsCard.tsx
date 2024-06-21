@@ -2,12 +2,34 @@ import { FiShoppingCart } from "react-icons/fi";
 import * as S from "./styles";
 import { Product } from "../../data/products";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { RootReducer } from "../../redux/User/root-reducer";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { cart } = useSelector(
+    (rootReducer: RootReducer) => rootReducer.cartReducer
+  );
+  const dispatch = useDispatch();
+
+  const isProductOnCart =
+    cart.find((productOnCart) => product.id === productOnCart.id) !== undefined;
+
+  function handleAddProductToCart() {
+    dispatch({
+      type: "cart/add-product",
+      payload: product,
+    });
+  }
+  function handleRemoveProductFromCart() {
+    dispatch({
+      type: "cart/remove-product",
+      payload: product,
+    });
+  }
   return (
     <S.Card>
       <S.ProductImage src={product.image} alt={product.description} />
@@ -25,12 +47,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </S.Review>
         <S.Price>{product.price}</S.Price>
       </S.ReviewPriceContainer>
-      <S.AddToCardButtonWhapper>
-        <S.AddToCardButton>
-          Adicionar ao Carrinho
-          <FiShoppingCart />
-        </S.AddToCardButton>
-      </S.AddToCardButtonWhapper>
+      <S.AddToCartButtonWhapper>
+        {isProductOnCart ? (
+          <S.RemoveFromCartButton onClick={handleRemoveProductFromCart}>
+            Remover do Carrinho
+            <FiShoppingCart />
+          </S.RemoveFromCartButton>
+        ) : (
+          <S.AddToCartButton onClick={handleAddProductToCart}>
+            Adicionar ao Carrinho
+            <FiShoppingCart />
+          </S.AddToCartButton>
+        )}
+      </S.AddToCartButtonWhapper>
     </S.Card>
   );
 };

@@ -50,14 +50,14 @@ export const Review = styled.span`
 
 export const Price = styled.strong``;
 
-export const AddToCardButtonWhapper = styled.div`
+export const AddToCartButtonWhapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
 `;
 
-export const AddToCardButton = styled.button`
+export const AddToCartButton = styled.button`
   border: none;
   border-radius: 5px;
   width: 100%;
@@ -65,6 +65,25 @@ export const AddToCardButton = styled.button`
 
   background-color: blue;
   color: white;
+  font-size: 0.75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+
+  svg {
+    font-size: 0.7rem;
+  }
+`;
+export const RemoveFromCartButton = styled.button`
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+
+  background-color: violet;
+  color: black;
   font-size: 0.75rem;
 
   display: flex;

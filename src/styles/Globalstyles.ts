@@ -13,4 +13,13 @@ body{
 body, button, input {
   font-family: 'Poppins',sans-serif;
 }
+button{
+  cursor: pointer;
+  transition: filter 0.3s;
+
+  &:hover{
+    filter: brightness(1.2);
+    transition: filter 0.3s;
+  }
+}
 `;
