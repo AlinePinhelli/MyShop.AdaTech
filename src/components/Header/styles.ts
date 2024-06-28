@@ -46,6 +46,30 @@ export const AuthButton = styled.button<AuthButtonProps>`
     font-size: 0.7rem;
   }
 `;
+export const AuthButtonName = styled.button<AuthButtonProps>`
+  border: none;
+  background-color: navy;
+
+  color: white;
+  font-size: 0.75rem;
+
+  display: flex;
+  align-items: center;
+`;
+export const divShowUser = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const AuthButtonEmail = styled.button<AuthButtonProps>`
+  border: none;
+  background-color: navy;
+
+  color: white;
+  font-size: 0.75rem;
+
+  display: flex;
+  align-items: center;
+`;
 
 export const CartButton = styled.button`
   border: none;
